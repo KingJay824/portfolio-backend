@@ -1,3 +1,4 @@
+// server.js
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -14,7 +15,15 @@ app.use(express.json());
 
 // --- Import Routers ---
 const contactsRouter = require('./routes/contacts.routes');
+const projectsRouter = require('./routes/projects.routes');
+const servicesRouter = require('./routes/services.routes');
+const usersRouter = require('./routes/users.routes');
+
+// --- Register Routers ---
 app.use('/api/contacts', contactsRouter);
+app.use('/api/projects', projectsRouter);
+app.use('/api/services', servicesRouter);
+app.use('/api/users', usersRouter);
 
 // Root endpoint
 app.get('/', (req, res) => {
